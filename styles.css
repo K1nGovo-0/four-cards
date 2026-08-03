@@ -11,6 +11,14 @@
   --shadow: 0 14px 28px rgba(35, 38, 47, 0.16);
 }
 
+@font-face {
+  font-family: 'EmbeddedSongti';
+  src: url('fonts/noto-serif-sc-chinese-simplified-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -205,6 +213,9 @@ button {
   padding: 0;
   border: 0;
   background: transparent;
+  color: inherit;
+  appearance: none;
+  -webkit-appearance: none;
   perspective: 1200px;
   -webkit-perspective: 1200px;
   cursor: pointer;
@@ -309,10 +320,12 @@ button {
 
 .quote-text {
   margin: auto 0;
-  font-family: "Songti SC", "STSong", "Noto Serif SC", Georgia, serif;
+  font-family: 'EmbeddedSongti', 'Songti SC', 'STSong', SimSun, serif;
   font-size: clamp(1rem, 3.6vw, 1.3rem);
   line-height: 1.75;
   text-align: center;
+  color: #000000;
+  -webkit-text-fill-color: #000000;
 }
 
 .card-dots {

@@ -1,6 +1,6 @@
 {
-  "name": "四格打卡",
-  "short_name": "四格打卡",
+  "name": "一言",
+  "short_name": "一言",
   "description": "每天翻开四张卡片，留下一句鼓励。",
   "lang": "zh-CN",
   "start_url": "./index.html",
