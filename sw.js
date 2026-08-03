@@ -1,4 +1,4 @@
-const CACHE_NAME = 'four-card-pwa-v3';
+const CACHE_NAME = 'four-card-pwa-v4';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -42,9 +42,13 @@ self.addEventListener('fetch', function (event) {
     return;
   }
 
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
   event.respondWith(
-    caches.match(request).then(function (cached) {
-      const network = fetch(request).then(function (response) {
+    fetch(request).then(function (response) {
         if (response && response.status === 200 && response.type === 'basic') {
           const copy = response.clone();
           caches.open(CACHE_NAME).then(function (cache) {
@@ -52,7 +56,8 @@ self.addEventListener('fetch', function (event) {
           });
         }
         return response;
-      }).catch(function () {
+    }).catch(function () {
+      return caches.match(request).then(function (cached) {
         if (cached) {
           return cached;
         }
@@ -61,8 +66,6 @@ self.addEventListener('fetch', function (event) {
         }
         return Response.error();
       });
-
-      return cached || network;
     })
   );
 });
